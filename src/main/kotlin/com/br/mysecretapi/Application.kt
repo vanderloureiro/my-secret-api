@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class MySecretApiApplication
+class Application
 
 fun main(args: Array<String>) {
-	runApplication<MySecretApiApplication>(*args)
+	runApplication<Application>(*args)
 }
