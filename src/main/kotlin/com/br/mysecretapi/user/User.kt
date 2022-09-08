@@ -7,6 +7,7 @@ import javax.persistence.*
 class User(
     @field: Id
     @field: GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long,
+    val id: Long?,
     var username: String
-)
+) {
+}

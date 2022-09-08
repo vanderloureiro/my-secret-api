@@ -4,10 +4,11 @@ import com.br.mysecretapi.user.gateway.UserService
 import com.br.mysecretapi.user.gateway.io.UserInput
 import com.br.mysecretapi.user.gateway.io.UserOutput
 
-class UserServiceImpl : UserService {
+class UserServiceImpl(val repository: UserRepository) : UserService {
 
     override fun create(input: UserInput) {
-        TODO("Not yet implemented")
+        val entity = User(null, input.username);
+        this.repository.save(entity);
     }
 
     override fun getAll(): List<UserOutput> {
