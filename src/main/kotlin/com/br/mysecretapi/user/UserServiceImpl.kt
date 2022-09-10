@@ -21,6 +21,10 @@ class UserServiceImpl(private val repository: UserRepository) : UserService {
     }
 
     override fun getById(id: Long): UserOutput {
-        TODO("Not yet implemented")
+        val reference = this.repository.getReferenceById(id);
+        if (reference == null) {
+
+        }
+        return UserOutput(reference.id as Long, reference.username);
     }
 }
