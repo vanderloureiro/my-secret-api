@@ -13,6 +13,8 @@ class SecretServiceImpl(
 
     override fun create(input: SecretInput) {
         userService.getById(input.userId);
+        val entity = Secret(null, input.message, input.userId);
+        repository.save(entity);
     }
 
     override fun getByUser(userId: Long): List<SecretOutput> {
