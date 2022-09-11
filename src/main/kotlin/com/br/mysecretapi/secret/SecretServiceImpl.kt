@@ -10,11 +10,13 @@ import org.springframework.stereotype.Service
 class SecretServiceImpl(
     private var repository: SecretRepository,
     private var userService: UserService) : SecretService {
+
     override fun create(input: SecretInput) {
-        TODO("Not yet implemented")
+        userService.getById(input.userId);
     }
 
     override fun getByUser(userId: Long): List<SecretOutput> {
-        TODO("Not yet implemented")
+        var result = repository.findAllByUserId(userId);
+        return result.map { secret -> SecretOutput(secret.id as Long, secret.message, secret.userId) };
     }
 }

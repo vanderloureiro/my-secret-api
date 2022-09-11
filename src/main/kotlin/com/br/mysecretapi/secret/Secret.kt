@@ -8,5 +8,7 @@ class Secret(
     @field: GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long?,
     @field: Column(nullable = false)
-    var message: String
+    var message: String,
+    @field: Column(nullable = false)
+    var userId: Long
 )
