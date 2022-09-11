@@ -8,15 +8,15 @@ import org.springframework.stereotype.Service
 
 @Service
 class SecretServiceImpl(
-    private var repository: SecretRepository,
-    private var userService: UserService) : SecretService {
+    private val repository: SecretRepository,
+    private val userService: UserService) : SecretService {
 
     override fun create(input: SecretInput) {
         userService.getById(input.userId);
     }
 
     override fun getByUser(userId: Long): List<SecretOutput> {
-        var result = repository.findAllByUserId(userId);
+        val result = repository.findAllByUserId(userId);
         return result.map { secret -> SecretOutput(secret.id as Long, secret.message, secret.userId) };
     }
 }
