@@ -1,5 +1,6 @@
 package com.br.mysecretapi.user
 
+import com.br.mysecretapi.user.exception.UserNotFoundException
 import com.br.mysecretapi.user.gateway.UserService
 import com.br.mysecretapi.user.gateway.io.UserInput
 import com.br.mysecretapi.user.gateway.io.UserOutput
@@ -16,12 +17,12 @@ class UserServiceImpl(private val repository: UserRepository) : UserService {
     override fun getAll(): List<UserOutput> {
         val result: List<User> = this.repository.findAll();
         return result.map {
-                user -> UserOutput(user.id as Long, user.usernaame);
+                user -> UserOutput(user.id as Long, user.username);
         }
     }
 
     override fun getById(id: Long): UserOutput {
-        val reference: User = this.repository.getReferenceById(id);
-        return UserOutput(reference.id as Long, reference.usernaame);
+        val user: User = this.repository.findById(id).orElseThrow{ UserNotFoundException() };
+        return UserOutput(user.id as Long, user.username);
     }
 }

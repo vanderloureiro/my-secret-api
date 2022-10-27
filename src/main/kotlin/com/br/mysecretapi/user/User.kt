@@ -9,5 +9,5 @@ class User(
     @field: GeneratedValue(strategy = GenerationType.IDENTITY)
     val id: Long?,
     @field: Column(nullable = false)
-    var usernaame: String,
+    var username: String,
 )
