@@ -14,17 +14,14 @@ class UserServiceImpl(private val repository: UserRepository) : UserService {
     }
 
     override fun getAll(): List<UserOutput> {
-        var result: List<User> = this.repository.findAll();
+        val result: List<User> = this.repository.findAll();
         return result.map {
-                user -> UserOutput(user.id as Long, user.username);
+                user -> UserOutput(user.id as Long, user.usernaame);
         }
     }
 
     override fun getById(id: Long): UserOutput {
-        val reference = this.repository.getReferenceById(id);
-        if (reference == null) {
-
-        }
-        return UserOutput(reference.id as Long, reference.username);
+        val reference: User = this.repository.getReferenceById(id);
+        return UserOutput(reference.id as Long, reference.usernaame);
     }
 }
